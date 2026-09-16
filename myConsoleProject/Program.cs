@@ -1,49 +1,51 @@
-﻿
-using System;
-
-// Create a class named MathOperations.
-// This class will contain a method that performs a math operation.
-class MathOperations
+﻿// Defines an interface named IQuittable.
+// An interface specifies a method that a class must implement.
+public interface IQuittable
 {
-    // Create a void method named Calculate.
-    // The method accepts two integer parameters: number1 and number2.
-    // It performs a math operation on the first number.
-    // It then displays the second number to the console.
-    public void Calculate(int number1, int number2)
+    // Declares a void method named Quit().
+    // Any class implementing IQuittable must provide the code for this method.
+    void Quit();
+}
+
+// Defines the Employee class.
+// Employee inherits from the IQuittable interface.
+public class Employee : IQuittable
+{
+    // Stores the employee's first name.
+    public string FirstName { get; set; }
+
+    // Stores the employee's last name.
+    public string LastName { get; set; }
+
+    // Implements the Quit() method required by the IQuittable interface.
+    public void Quit()
     {
-        // Multiply the first integer by 2 and store the result.
-        int result = number1 * 2;
-
-        // Display the result of the math operation on the first integer.
-        Console.WriteLine("The result of the math operation is: " + result);
-
-        // Display the first integer that was passed to the method.
-        Console.WriteLine("The first number is: " + number1);
-
-        // Display the second integer that was passed to the method.
-        Console.WriteLine("The second number is: " + number2);
+        // Displays a message when the employee quits.
+        Console.WriteLine("The employee has quit the company.");
     }
 }
 
-// Create the main program class.
+// Defines the main Program class.
 class Program
 {
-    // The Main method is where the console application starts running.
+    // The Main() method is where the console application begins execution.
     static void Main(string[] args)
     {
-        // Instantiate the MathOperations class by creating a new object.
-        MathOperations math = new MathOperations();
+        // Creates a new Employee object and assigns first and last names.
+        Employee employee = new Employee();
+        employee.FirstName = "John";
+        employee.LastName = "Smith";
 
-        // Call the Calculate method and pass two numbers as arguments.
-        // The first number is 10 and the second number is 5.
-        math.Calculate(10, 5);
+        // Creates an IQuittable interface-type variable.
+        // The Employee object is assigned to it because Employee implements IQuittable.
+        // This is an example of polymorphism.
+        IQuittable quittableEmployee = employee;
 
-        // Call the Calculate method again.
-        // This time, specify the parameters by their names.
-        math.Calculate(number1: 20, number2: 8);
+        // Calls the Quit() method through the IQuittable interface.
+        // C# executes the Employee class's implementation of Quit().
+        quittableEmployee.Quit();
 
-        // Pause the console so the user can see the output before the program closes.
+        // Keeps the console window open so the user can see the output.
         Console.ReadLine();
     }
 }
-
