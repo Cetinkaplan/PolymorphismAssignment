@@ -1,54 +1,86 @@
-# C# Class and Method Assignment
+# C# Interfaces and Polymorphism
 
-## Description
+## Assignment Overview
 
-This project is a C# console application created as part of a programming assignment. The purpose of the assignment is to demonstrate how to create a class, create and use a method with parameters, instantiate a class, and pass parameters to a method both normally and by name.
+This project is a C# console application that demonstrates the use of **interfaces, inheritance, implementation, and polymorphism**.
+
+The assignment creates an `IQuittable` interface with a `Quit()` method. The `Employee` class implements the interface and provides its own implementation of the `Quit()` method. The program then uses polymorphism to create an object of type `IQuittable` and calls the `Quit()` method.
+
+Please review Polymorphism Assignment under myConsoleProject and Program.cs ! 
 
 ## Requirements
 
-The application demonstrates the following:
+The application includes the following:
 
-1. Creates a class named `MathOperations`.
-2. Creates a `void` method named `Calculate()` that accepts two integers as parameters.
-3. Performs a mathematical operation on the first integer.
-4. Displays the second integer to the console.
-5. Instantiates the `MathOperations` class in the `Main()` method.
-6. Calls the `Calculate()` method by passing two numbers normally.
-7. Calls the `Calculate()` method again using named parameters.
-8. Includes comments throughout the code to explain what each line or block does.
-
-# Please Find Method class inside of myConsoleProject and under program.cs 
+1. An interface called `IQuittable`.
+2. A `void Quit()` method defined inside the `IQuittable` interface.
+3. An `Employee` class that inherits from and implements `IQuittable`.
+4. An implementation of the `Quit()` method inside the `Employee` class.
+5. An `IQuittable` object that references an `Employee` object.
+6. A call to the `Quit()` method using the `IQuittable` object.
+7. Comments throughout the code explaining what each line or block does.
 
 ## Technologies Used
 
 * C#
 * .NET
 * Visual Studio
-* Console Application
+* Git
+* GitHub
 
-## How the Program Works
+## Concepts Demonstrated
 
-The program contains a `MathOperations` class with a `Calculate()` method.
+### Interface
 
-The method accepts two integer parameters:
+The `IQuittable` interface defines a contract that requires implementing classes to provide a `Quit()` method.
+
+```csharp
+public interface IQuittable
+{
+    void Quit();
+}
+```
+
+### Interface Implementation
+
+The `Employee` class implements the `IQuittable` interface:
+
+```csharp
+public class Employee : IQuittable
+{
+    public void Quit()
+    {
+        Console.WriteLine("The employee has quit the company.");
+    }
+}
+```
+
+### Polymorphism
+
+Polymorphism is demonstrated by assigning an `Employee` object to a variable of type `IQuittable`:
 
 
-public void Calculate(int number1, int number2)
 
-The result is then displayed along with the second number.
-
-In the `Main()` method, an object of the `MathOperations` class is created:
+The `Quit()` method can then be called through the interface:
 
 
-MathOperations math = new MathOperations();
+## Expected Output
+
+When the program runs, the console displays:
 
 
-The method is first called using regular parameters:
+## How to Run the Program
 
+1. Clone or download this repository.
+2. Open the project in Visual Studio.
+3. Build the solution.
+4. Run the console application.
+5. The program will display the employee's quit message in the console.
 
-math.Calculate(10, 5);
+## Purpose of the Assignment
 
+The purpose of this assignment is to practice creating and implementing interfaces in C# and to understand how polymorphism allows an object to be referenced through an interface type.
 
-The method is then called using named parameters:
+## Author
 
-
+Selcuk Kaplan
